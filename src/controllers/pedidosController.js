@@ -58,20 +58,16 @@ export const excluirPedido = async (req, res) => {
   }
 };
 
-// chama a procedure finalizar_pedido(p_id_pedido)
 export const finalizarPedido = async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);
 
-    // Executa a procedure; note que CALL é suportado em PostgreSQL
     await pool.query('CALL finalizar_pedido($1)', [id]);
 
-    // obtem o pedido atualizado
     const { rows } = await pool.query('SELECT id_pedido, status, valor_total FROM pedido WHERE id_pedido = $1', [id]);
 
     res.json({ mensagem: 'Procedure finalizar_pedido executada', pedido: rows[0] });
   } catch (err) {
-    // procedure pode lançar exceção com RAISE EXCEPTION -> chega aqui
     res.status(400).json({ erro: err.message });
   }
 };

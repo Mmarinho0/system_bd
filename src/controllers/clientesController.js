@@ -29,7 +29,6 @@ export const criarCliente = async (req, res) => {
     );
     res.status(201).json(rows[0]);
   } catch (err) {
-    // exemplo: violação de unique (cpf/email)
     res.status(400).json({ erro: err.message });
   }
 };
@@ -59,7 +58,6 @@ export const excluirCliente = async (req, res) => {
   }
 };
 
-// chama a função fn_cliente_total_gasto(p_id_cliente)
 export const totalGastoCliente = async (req, res) => {
   try {
     const id = parseInt(req.params.id, 10);

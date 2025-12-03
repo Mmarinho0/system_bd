@@ -16,7 +16,6 @@ router.post('/', criarCliente);
 router.put('/:id', atualizarCliente);
 router.delete('/:id', excluirCliente);
 
-// endpoint que usa a função fn_cliente_total_gasto(p_id_cliente)
 router.get('/:id/total-gasto', totalGastoCliente);
 
 export default router;
