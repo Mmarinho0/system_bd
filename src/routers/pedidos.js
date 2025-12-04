@@ -5,7 +5,7 @@ import {
   criarPedido,
   atualizarPedido,
   excluirPedido,
-  finalizarPedido
+  pagarPedido
 } from '../controllers/pedidosController.js';
 
 const router = Router();
@@ -16,6 +16,6 @@ router.post('/', criarPedido);
 router.put('/:id', atualizarPedido);
 router.delete('/:id', excluirPedido);
 
-router.post('/:id/finalizar', finalizarPedido);
+router.post('/:id/pagar', pagarPedido);
 
 export default router;
